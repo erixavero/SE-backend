@@ -4,8 +4,93 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a103f505b1d5007c9192ba24940fd128",
+    "content-hash": "0ef40fe3ec3f9a163d6c17e369ca1ac1",
     "packages": [
+        {
+            "name": "aducworth/openweather",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/aducworth/openweather.git",
+                "reference": "31016fe95c87adc705c6040cb48e03925a61f608"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/aducworth/openweather/zipball/31016fe95c87adc705c6040cb48e03925a61f608",
+                "reference": "31016fe95c87adc705c6040cb48e03925a61f608",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.0"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-0": {
+                    "Aducworth\\Openweather": [
+                        "src"
+                    ]
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "authors": [
+                {
+                    "name": "Austin Ducworth",
+                    "email": "aducworth@gmail.com"
+                }
+            ],
+            "description": "OpenWeatherMap API wrapper for Laravel 5",
+            "time": "2018-01-25T22:36:16+00:00"
+        },
+        {
+            "name": "cmfcmf/openweathermap-php-api",
+            "version": "v2.4.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cmfcmf/OpenWeatherMap-PHP-Api.git",
+                "reference": "37f2e1178948a07c8d50d5063a15ca84b5b51f6a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/cmfcmf/OpenWeatherMap-PHP-Api/zipball/37f2e1178948a07c8d50d5063a15ca84b5b51f6a",
+                "reference": "37f2e1178948a07c8d50d5063a15ca84b5b51f6a",
+                "shasum": ""
+            },
+            "require": {
+                "ext-xml": "*",
+                "php": ">=5.3.0"
+            },
+            "require-dev": {
+                "phpunit/phpunit": "^4.8 || ^5.0.5"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Cmfcmf\\": "Cmfcmf"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Christian Flach (cmfcmf)",
+                    "email": "cmfcmf.flach@gmail.com",
+                    "homepage": "http://cmfcmf.github.io",
+                    "role": "Developer"
+                }
+            ],
+            "description": "A php api to parse weather data from OpenWeatherMap.org. This api tries to normalise and abstract the data and remove inconsistencies.",
+            "homepage": "https://github.com/cmfcmf/OpenWeatherMap-PHP-Api",
+            "keywords": [
+                "OpenWeatherMap",
+                "api",
+                "free",
+                "owm",
+                "weather"
+            ],
+            "time": "2018-08-30T07:35:48+00:00"
+        },
         {
             "name": "dnoegel/php-xdg-base-dir",
             "version": "0.1",
@@ -365,6 +450,56 @@
                 "trusted proxy"
             ],
             "time": "2018-02-07T20:20:57+00:00"
+        },
+        {
+            "name": "gmopx/laravel-owm",
+            "version": "v0.1.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/gitllermopalafox/Laravel-OWM.git",
+                "reference": "dae518c92d0c64218c696ec03778ef7ac831e61b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/gitllermopalafox/Laravel-OWM/zipball/dae518c92d0c64218c696ec03778ef7ac831e61b",
+                "reference": "dae518c92d0c64218c696ec03778ef7ac831e61b",
+                "shasum": ""
+            },
+            "require": {
+                "cmfcmf/openweathermap-php-api": "^2.1",
+                "php": ">=5.4.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Gmopx\\LaravelOWM\\LaravelOWMServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Gmopx\\LaravelOWM\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Guillermo Palafox",
+                    "email": "palafox.87@gmail.com"
+                }
+            ],
+            "description": "Wrapper for cmfcmf/openweathermap-php-api",
+            "keywords": [
+                "clima",
+                "laravel",
+                "open weather map",
+                "weather"
+            ],
+            "time": "2018-09-04T05:12:39+00:00"
         },
         {
             "name": "jakub-onderka/php-console-color",
@@ -1151,6 +1286,46 @@
                 "random"
             ],
             "time": "2018-07-02T15:55:56+00:00"
+        },
+        {
+            "name": "piphp/gpio",
+            "version": "v0.3.3",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/PiPHP/GPIO.git",
+                "reference": "5d2c5b8f6fa7b3327b29ed88fcee0e89a3ca398b"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/PiPHP/GPIO/zipball/5d2c5b8f6fa7b3327b29ed88fcee0e89a3ca398b",
+                "reference": "5d2c5b8f6fa7b3327b29ed88fcee0e89a3ca398b",
+                "shasum": ""
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "PiPHP\\GPIO\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Andrew Carter",
+                    "email": "andrewcarter1992@gmail.com"
+                }
+            ],
+            "description": "A library for accessing the GPIO pins on a Raspberry Pi",
+            "keywords": [
+                "GPIO",
+                "pi",
+                "pin",
+                "pins",
+                "raspberry"
+            ],
+            "time": "2016-07-09T11:38:12+00:00"
         },
         {
             "name": "psr/container",
@@ -4424,7 +4599,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "aducworth/openweather": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {
