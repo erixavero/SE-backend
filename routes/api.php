@@ -48,3 +48,13 @@ Route::group([
     Route::post('lightoff', 'DeviceController@lightOff');
 
 });
+
+Route::group([
+    'prefix' => 'schedule'
+], function(){
+   Route::get('all', 'CalendarController@showAll');
+   Route::get('date/{date}', 'CalendarController@showByDate');
+   Route::post('createNew', 'CalendarController@create');
+});
+
+
