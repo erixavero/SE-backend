@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Events\LightSwitch;
 
 use App\light;
 //use App\AC;
@@ -27,7 +28,9 @@ class DeviceController extends Controller
 
     if(count($data)>0){
       return response()->json($data);
-    }return response()->json(['error' => 'Nothing found'], 404);
+    }
+    $default['light'] = ['status' => 'Off'];
+    return response()->json($data);
   }
 
   public function lightOn(Request $request){
@@ -37,6 +40,9 @@ class DeviceController extends Controller
 
     try {
       $data = $this->light->create($light);
+
+      broadcast(new LightSwitch($data))->toOthers();
+
       return response()->json($data);
     } catch (QueryException $e) {
       return response()->json(['error' => "it screwed up"], 404);
@@ -50,6 +56,9 @@ class DeviceController extends Controller
 
     try {
       $data = $this->light->create($light);
+
+      broadcast(new LightSwitch($data))->toOthers();
+
       return response()->json($data);
     } catch (QueryException $e) {
       return response()->json(['error' => "it screwed up"], 404);

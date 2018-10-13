@@ -14,6 +14,7 @@ class Light extends Migration
     public function up()
     {
       Schema::create('light', function (Blueprint $table) {
+          $table->increments('id');
           $table->string('status');
           $table->timestamps();
       });
