@@ -16,29 +16,43 @@ class DeviceController extends Controller
 
   }
 
-    public function lightOn(Request $request){
-      $light=[
-        "status" => $request->status
-      ];
+  public function stat()
+  {
+    try {
+      $data['light'] = $this->light->orderBy('created_at', 'desc')->first();
 
-      try {
-        $data = $this->light->create($light);
-        return response()->json($data);
-      } catch (QueryException $e) {
-        return response()->json(['error' => "it screwed up"], 404);
-      }
+    } catch (QueryException $e) {
+      return response()->json(['error' => "it screwed up"], 404);
     }
 
-    public function lightOff(Request $request){
-      $light=[
-        "status" => $request->status
-      ];
+    if(count($data)>0){
+      return response()->json($data);
+    }return response()->json(['error' => 'Nothing found'], 404);
+  }
 
-      try {
-        $data = $this->light->create($light);
-        return response()->json($data);
-      } catch (QueryException $e) {
-        return response()->json(['error' => "it screwed up"], 404);
-      }
+  public function lightOn(Request $request){
+    $light=[
+      "status" => $request->status
+    ];
+
+    try {
+      $data = $this->light->create($light);
+      return response()->json($data);
+    } catch (QueryException $e) {
+      return response()->json(['error' => "it screwed up"], 404);
     }
+  }
+
+  public function lightOff(Request $request){
+    $light=[
+      "status" => $request->status
+    ];
+
+    try {
+      $data = $this->light->create($light);
+      return response()->json($data);
+    } catch (QueryException $e) {
+      return response()->json(['error' => "it screwed up"], 404);
+    }
+  }
 }
