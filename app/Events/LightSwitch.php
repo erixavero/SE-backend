@@ -9,19 +9,19 @@ use Illuminate\Broadcasting\PresenceChannel;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Broadcasting\InteractsWithSockets;
 use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
+use Illuminate\Contracts\Broadcasting\ShouldBroadcastNow;
 
-class MessagePush
+use App\light;
+
+class LightSwitch implements ShouldBroadcastNow
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    /**
-     * Create a new event instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public $light;
+
+    public function __construct(light $light)
     {
-        //
+        $this->light = $light;
     }
 
     /**
@@ -29,8 +29,18 @@ class MessagePush
      *
      * @return \Illuminate\Broadcasting\Channel|array
      */
+
+    //status broadcast on light channel
     public function broadcastOn()
     {
-        return new PrivateChannel('channel-name');
+        return new Channel('light');
+    }
+
+    public function broadcastWith()
+    {
+      return [
+        'status' => $this->light->status,
+        'created_at' => $this->light->created_at
+      ];
     }
 }
