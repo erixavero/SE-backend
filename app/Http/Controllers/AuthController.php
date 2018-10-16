@@ -36,7 +36,9 @@ class AuthController extends Controller
       $arr = array();
       $data = [
         'token'=>$token,
-        'id'=>$user->id
+        'id'=>$user->id,
+        'name' =>$user->name,
+        'email' =>$user->email
       ];
       $arr['data'] = $data;
       return response()->json($arr);
