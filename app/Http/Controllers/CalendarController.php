@@ -17,6 +17,7 @@ class CalendarController extends Controller
 
     public function create(Request $request){
         $data = [
+            "user_id" => $request -> user_id,
             "event" => $request -> event,
             "date" => $request -> date,
             "time" => $request -> time
@@ -43,7 +44,10 @@ class CalendarController extends Controller
 
     public function showByDate($date){
         try {
-            $data = $this->data->where('date','=',$date)->get();
+            $data = $this->data->where('date','=',$date)->
+                join('users', 'users.id', '=', 'calendars.user_id')
+                 ->select('calendars.id', 'calendars.event', 'users.id AS user_id','users.name AS name', 'calendars.date','calendars.time')
+                 ->first();
             return response()->json($data,200);
         }
         catch (Exception $ex) {
