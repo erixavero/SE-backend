@@ -11,7 +11,6 @@
 =======
         "gmopx/laravel-owm": "^0.1.3",
         "jwilsson/spotify-web-api-php": "^2.6",
->>>>>>> Stashed changes
         "laravel/framework": "5.7.*",
         "laravel/tinker": "^1.0",
         "tymon/jwt-auth": "^1.0.0-rc.2"
