@@ -44,7 +44,10 @@ Route::group([
     'prefix' => 'device'
 
 ], function () {
+    Route::get('stat', 'DeviceController@stat');
     Route::post('lighton', 'DeviceController@lightOn');
     Route::post('lightoff', 'DeviceController@lightOff');
+    Route::post('tvon', 'DeviceController@tvOn');
+    Route::post('tvoff', 'DeviceController@tvOff');
 
 });
