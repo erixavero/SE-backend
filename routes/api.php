@@ -61,10 +61,17 @@ Route::group([
 Route::group([
     'prefix' => 'spotify'
 ], function(){
-   Route::get('auth', 'SpotifyLogin@auth');
-   Route::post('login', 'SpotifyLogin@login');
+   Route::get('auth', 'SpotifyAPI@auth');
+   Route::get('login', 'SpotifyAPI@login');
    Route::get('gettrack', 'SpotifyAPI@getTrackInformation');
-   
+   Route::get('next','SpotifyAPI@nextTrack');
+   Route::get('previous','SpotifyAPI@previousTrack');
+   Route::get('pause','SpotifyAPI@pauseTrack');
+   Route::put('play','SpotifyAPI@playTrack');
+   Route::put('trackShuffle','SpotifyAPI@trackShuffle');
+   Route::put('trackRepeat','SpotifyAPI@trackRepeat');
+   Route::put('trackVolume','SpotifyAPI@trackVolume');
+   Route::put('trackSeek','SpotifyAPI@trackSeek');
 });
 
 
