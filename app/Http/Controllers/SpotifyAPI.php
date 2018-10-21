@@ -44,7 +44,7 @@ class SpotifyAPI extends Controller
 	);
 
 	// Request a access token using the code from Spotify
-	$session->requestAccessToken("AQCqpZqW5t8qaFsK4gTb8KfJbqmjPPAJShGGhy7wH-4V1uEu_xtUm3x8Tg-iJF_jpkitFfNBH0a0B71jugFRQHdOOlaEAMJAtsR-a4C5tREc7PucELbJIXbDr_TfORbDEmHXIWWsJho-PhFyfubMYctmgaHJriVLvQ5YeyaM0wxgJCOHr35vBF0kJRr6JswB2VYDsID7PoNqb9bf33ef7HQ-cXKd-h6Z6VG_zEDkHcG9cvwMyt9F6q_8pjkogdmDUKHIOMZEBPgHI3vY--0Icn9RWQq-chKYjimTl9ugX5s");
+	$session->requestAccessToken($request->code);
 
 	$accessToken = $session->getAccessToken();
 	$refreshToken = $session->getRefreshToken();
@@ -69,7 +69,7 @@ class SpotifyAPI extends Controller
 
     public function getTrackInformation()
   {
-  	$accessToken = $this->data->select('spotifytokens.accessToken')->pluck('accessToken')->first();
+  	$accessToken = $this->data->orderBy('id', 'desc')->select('spotifytokens.accessToken')->pluck('accessToken')->first();
   	$this->api->setAccessToken($accessToken);
   	$data = $this->api->getMyCurrentTrack();
   	return response()->json($data);
@@ -77,37 +77,35 @@ class SpotifyAPI extends Controller
 
   public function playTrack()
   {
-  	$accessToken = $this->data->select('spotifytokens.accessToken')->pluck('accessToken')->first();
+  	$accessToken = $this->data->orderBy('id', 'desc')->select('spotifytokens.accessToken')->pluck('accessToken')->first();
   	$this->api->setAccessToken($accessToken);
-  	$this->api->play(false, [
-    'uris' => [],
-	]);
+  	$this->api->play(false, false);
   }
 
   public function pauseTrack()
   {
-  	$accessToken = $this->data->select('spotifytokens.accessToken')->pluck('accessToken')->first();
+  	$accessToken = $this->data->orderBy('id', 'desc')->select('spotifytokens.accessToken')->pluck('accessToken')->first();
   	$this->api->setAccessToken($accessToken);
     $this->api->pause();		
   }
 
   public function nextTrack()
   {
-  	$accessToken = $this->data->select('spotifytokens.accessToken')->pluck('accessToken')->first();
+  	$accessToken = $this->data->orderBy('id', 'desc')->select('spotifytokens.accessToken')->pluck('accessToken')->first();
   	$this->api->setAccessToken($accessToken);
   	$this->api->next();
   }
 
   public function previousTrack()
   {
-  	$accessToken = $this->data->select('spotifytokens.accessToken')->pluck('accessToken')->first();
+  	$accessToken = $this->data->orderBy('id', 'desc')->select('spotifytokens.accessToken')->pluck('accessToken')->first();
   	$this->api->setAccessToken($accessToken);
   	$this->api->previous();
   }
 
   public function trackShuffle(Request $request)
   {
-  	$accessToken = $this->data->select('spotifytokens.accessToken')->pluck('accessToken')->first();
+  	$accessToken = $this->data->orderBy('id', 'desc')->select('spotifytokens.accessToken')->pluck('accessToken')->first();
   	$this->api->setAccessToken($accessToken);
   	$this->api->shuffle([
     'state' => $request->shuffle,
@@ -125,7 +123,7 @@ class SpotifyAPI extends Controller
 
  public function trackVolume(Request $request)
  {
- 	$accessToken = $this->data->select('spotifytokens.accessToken')->pluck('accessToken')->first();
+ 	$accessToken = $this->data->orderBy('id', 'desc')->select('spotifytokens.accessToken')->pluck('accessToken')->first();
   	$this->api->setAccessToken($accessToken);
  	$this->api->changeVolume([
     'volume_percent' => $request->volume,
@@ -134,7 +132,7 @@ class SpotifyAPI extends Controller
 
  public function trackSeek(Request $request)
  {
- 	$accessToken = $this->data->select('spotifytokens.accessToken')->pluck('accessToken')->first();
+ 	$accessToken = $this->data->orderBy('id', 'desc')->select('spotifytokens.accessToken')->pluck('accessToken')->first();
   	$this->api->setAccessToken($accessToken);
  	$this->api->seek([
     'position_ms' => $request->seek,
