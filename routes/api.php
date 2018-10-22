@@ -32,7 +32,6 @@ Route::group([
 
 });
 
-//weather still bugged
 // Gmopx\LaravelOWM\Http\Controllers
 Route::group(['prefix' => 'owmapi', 'namespace' => '\Gmopx\LaravelOWM\Http\Controllers'], function() {
     Route::get('current-weather', ['uses' => 'LaravelOWMController@currentweather']);
@@ -75,4 +74,3 @@ Route::group([
    Route::put('trackVolume','SpotifyAPI@trackVolume');
    Route::put('trackSeek','SpotifyAPI@trackSeek');
 });
-
