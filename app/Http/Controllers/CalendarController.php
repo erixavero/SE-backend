@@ -13,6 +13,7 @@ class CalendarController extends Controller
     public function __construct(Calendar $data)
     {
         $this->data = $data;
+        
     }
 
     public function create(Request $request){

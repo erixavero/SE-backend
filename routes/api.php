@@ -59,5 +59,3 @@ Route::group([
    Route::get('date/{date}', 'CalendarController@showByDate');
    Route::post('createNew', 'CalendarController@create');
 });
-
-
