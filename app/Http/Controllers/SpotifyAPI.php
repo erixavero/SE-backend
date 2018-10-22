@@ -18,9 +18,9 @@ class SpotifyAPI extends Controller
     public function auth()
     {
     	 $session = new SpotifyWebAPI\Session(
-    	'be30530eafbc4dc4a2fd98b45a508de9',
-    	'0bbe0303a0194441ba734352e11a2a48',
-    	'http://localhost:8000'
+    	'e3dc74d13f8444d6860105a175221a68',
+    	'5f52a08fce90433ab251ef810501afe7',
+    	'http://178.128.62.29'
 		);
 
 		$options = [
@@ -38,9 +38,9 @@ class SpotifyAPI extends Controller
     public function login(Request $request)
     {
     	$session = new SpotifyWebAPI\Session(
-    'be30530eafbc4dc4a2fd98b45a508de9',
-    '0bbe0303a0194441ba734352e11a2a48',
-    'http://localhost:8000'
+    'e3dc74d13f8444d6860105a175221a68',
+    '5f52a08fce90433ab251ef810501afe7',
+    'http://178.128.62.29'
 	);
 
 	// Request a access token using the code from Spotify
@@ -103,7 +103,7 @@ class SpotifyAPI extends Controller
   	$this->api->previous();
   }
 
-  public function trackShuffle(Request $request)
+  public function trackShuffle(Request $request) 
   {
   	$accessToken = $this->data->orderBy('id', 'desc')->select('spotifytokens.accessToken')->pluck('accessToken')->first();
   	$this->api->setAccessToken($accessToken);
@@ -112,7 +112,7 @@ class SpotifyAPI extends Controller
 	]);
   }
 
- public function trackRepeat(Request $request)
+ public function trackRepeat(Request $request) //off,track,context
  {
  	$accessToken = $this->data->select('spotifytokens.accessToken')->pluck('accessToken')->first();
   	$this->api->setAccessToken($accessToken);
@@ -130,7 +130,7 @@ class SpotifyAPI extends Controller
 	]);
  }
 
- public function trackSeek(Request $request)
+ public function trackSeek(Request $request) // ms 
  {
  	$accessToken = $this->data->orderBy('id', 'desc')->select('spotifytokens.accessToken')->pluck('accessToken')->first();
   	$this->api->setAccessToken($accessToken);
