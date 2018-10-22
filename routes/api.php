@@ -58,6 +58,7 @@ Route::group([
    Route::get('date/{date}', 'CalendarController@showByDate');
    Route::post('createNew', 'CalendarController@create');
 });
+<<<<<<< HEAD
 
 Route::group([
     'prefix' => 'spotify'
@@ -74,3 +75,5 @@ Route::group([
    Route::put('trackVolume','SpotifyAPI@trackVolume');
    Route::put('trackSeek','SpotifyAPI@trackSeek');
 });
+=======
+>>>>>>> 50d6eead5b6d1165f8e58b14f4fdb2e4e71e7980

@@ -14,7 +14,7 @@ class DeviceController extends Controller
   public function __construct(light $light, tv $tv){
     $this->light = $light;
     $this->tv = $tv;
-
+    
   }
 
   public function stat()
