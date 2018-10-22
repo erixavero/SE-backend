@@ -32,7 +32,6 @@ Route::group([
 
 });
 
-//weather still bugged
 // Gmopx\LaravelOWM\Http\Controllers
 Route::group(['prefix' => 'owmapi', 'namespace' => '\Gmopx\LaravelOWM\Http\Controllers'], function() {
     Route::get('current-weather', ['uses' => 'LaravelOWMController@currentweather']);
@@ -59,3 +58,22 @@ Route::group([
    Route::get('date/{date}', 'CalendarController@showByDate');
    Route::post('createNew', 'CalendarController@create');
 });
+<<<<<<< HEAD
+
+Route::group([
+    'prefix' => 'spotify'
+], function(){
+   Route::get('auth', 'SpotifyAPI@auth');
+   Route::put('login', 'SpotifyAPI@login');
+   Route::get('gettrack', 'SpotifyAPI@getTrackInformation');
+   Route::get('next','SpotifyAPI@nextTrack');
+   Route::get('previous','SpotifyAPI@previousTrack');
+   Route::get('pause','SpotifyAPI@pauseTrack');
+   Route::get('play','SpotifyAPI@playTrack');
+   Route::put('trackShuffle','SpotifyAPI@trackShuffle');
+   Route::put('trackRepeat','SpotifyAPI@trackRepeat');
+   Route::put('trackVolume','SpotifyAPI@trackVolume');
+   Route::put('trackSeek','SpotifyAPI@trackSeek');
+});
+=======
+>>>>>>> 50d6eead5b6d1165f8e58b14f4fdb2e4e71e7980
