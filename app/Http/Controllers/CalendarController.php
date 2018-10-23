@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Calendar;
 use Exception;
+use Carbon;
 
 class CalendarController extends Controller
 {
@@ -49,6 +50,22 @@ class CalendarController extends Controller
                 join('users', 'users.id', '=', 'calendars.user_id')
                  ->select('calendars.id', 'calendars.event', 'users.id AS user_id','users.name AS name', 'calendars.date','calendars.time')
                  ->first();
+            return response()->json($data,200);
+        }
+        catch (Exception $ex) {
+            echo $ex;
+            return response('Failed', 400);
+        }
+    }
+
+    public function showTodayDate()
+    {
+        $mytime = Carbon\Carbon::now();
+        $time = $mytime->format('d-m-Y');
+        try {
+            $data = $this->data->where('date','=',$time)->
+                join('users', 'users.id', '=', 'calendars.user_id')
+                 ->select('calendars.id', 'calendars.event', 'users.id AS user_id','users.name AS name', 'calendars.date','calendars.time')->get();
             return response()->json($data,200);
         }
         catch (Exception $ex) {

@@ -72,7 +72,7 @@ class RegisterController extends Controller
             'password' => Hash::make($data['password']),
         ]);
 
-        return response()->json(["success" => "signed up"])
+        return response()->json(["success" => "signed up"]);
 
       }
       catch(QueryException $a){
